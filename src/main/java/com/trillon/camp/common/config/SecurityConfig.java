@@ -17,7 +17,7 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 import lombok.RequiredArgsConstructor;
 
 @Configuration
-@EnableWebSecurity // Spring Security의 기본 설정 대신 사용자가 커스터마이징한 설정을 시큐리티에 적용
+@EnableWebSecurity // Spring Security�쓽 湲곕낯 �꽕�젙 ���떊 �궗�슜�옄媛� 而ㅼ뒪�꽣留덉씠吏뺥븳 �꽕�젙�쓣 �떆�걧由ы떚�뿉 �쟻�슜
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
@@ -35,7 +35,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		.antMatchers(HttpMethod.GET,  "/suggest/**").permitAll() 
 		.antMatchers(HttpMethod.POST, "/suggest/**").permitAll()
-				
+		
+		.antMatchers(HttpMethod.GET,  "/schedule/calendar").permitAll()
+		.antMatchers(HttpMethod.GET,  "/schedule/schedulePopUp").permitAll()
+		.antMatchers(HttpMethod.GET,  "/schedule/get.do").permitAll()
+		.antMatchers(HttpMethod.POST, "/schedule/**").permitAll()
+		
 		.antMatchers(HttpMethod.GET,  "/sample/admin").permitAll()
 		.antMatchers(HttpMethod.POST, "/member/signup").permitAll()
 		.antMatchers(HttpMethod.POST, "/mail").permitAll()
@@ -48,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	  http.formLogin() .loginProcessingUrl("/members/login")
 	  .loginPage("/members/login") .usernameParameter("userId")
 	  //.successHandler(authSuccessHandler) //.failureHandler(authFailureHandler)
-	  // /members/login-> /index로 고쳤음 나중에 다시 로그인으로 해야함
+	  // /members/login-> /index濡� 怨좎낀�쓬 �굹以묒뿉 �떎�떆 濡쒓렇�씤�쑝濡� �빐�빞�븿
 	  .permitAll();
 		 
 		http.logout()
@@ -60,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		 * .tokenRepository(tokenRepository());
 		 */
 		
-		// csrf : post요청일 때 수행해야 하는 csrf 토큰 검증을 끔
+		// csrf : post�슂泥��씪 �븣 �닔�뻾�빐�빞 �븯�뒗 csrf �넗�겙 寃�利앹쓣 �걫
 		//http.csrf().disable();
 		http.csrf().ignoringAntMatchers("/mail");
 	}
