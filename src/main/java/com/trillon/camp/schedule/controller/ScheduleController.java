@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +23,7 @@ public class ScheduleController {
 		System.out.println("calendar.jsp");
 	}
 	
-	@RequestMapping("/schedulePopUp")
+	@GetMapping("/schedulePopUp")
 	public void schedulePopUp() {
 		System.out.println("schedulePopUp.jsp");
 	}
@@ -66,6 +67,15 @@ public class ScheduleController {
 		data.put("reservationDetail","test2");
 		list.add(data);
 		
+		data = new HashMap();
+		data.put("reservationTitle","안뇽");
+		data.put("reservationDate","2023-03-15");
+		data.put("reservationDateEnd","2023-03-15");
+		data.put("reservationTime","18:00:00");
+		data.put("reservationIdx","3");
+		data.put("reservationDetail","test3");
+		list.add(data);
+		
 		System.out.println("실행되나요");
 		return list;
 		
@@ -75,7 +85,7 @@ public class ScheduleController {
 	public String addTodo(@RequestParam("title") String title,@RequestParam("dateStart") String dateStart,
 			@RequestParam("dateEnd") String dateEnd,
 			@RequestParam("timeStart") String timeStart) {
-		
+		System.out.println("dhosdfihjosdfjkh");
 		System.out.println(title);
 		System.out.println(dateStart);
 		System.out.println(dateEnd);

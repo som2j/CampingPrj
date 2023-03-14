@@ -64,7 +64,7 @@ $.ajax({
 </head>
 <body>
 
-	<input type="button" value="일정 추가" onclick="location.href='/camp/schedule/schedulePopUp'">
+	<input type="button" value="일정 추가" onclick="location.href='/schedule/schedulePopUp'">
 
 	<div id='calendar'></div>
 	

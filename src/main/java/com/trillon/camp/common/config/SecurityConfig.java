@@ -28,7 +28,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		.antMatchers(HttpMethod.GET,  "/").permitAll()
+		.antMatchers(HttpMethod.GET,  "/**").permitAll()
+		.antMatchers(HttpMethod.POST,  "/**").permitAll()
+		
 		.antMatchers(HttpMethod.GET,  "/sample/admin").permitAll()
 		.antMatchers(HttpMethod.GET,  "/index").permitAll()
 		.antMatchers(HttpMethod.GET,  "/elements").permitAll()
@@ -39,10 +41,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers(HttpMethod.GET,  "/schedule/calendar").permitAll()
 		.antMatchers(HttpMethod.GET,  "/schedule/schedulePopUp").permitAll()
 		.antMatchers(HttpMethod.GET,  "/schedule/get.do").permitAll()
-		.antMatchers(HttpMethod.POST, "/schedule/**").permitAll()
 		
 		.antMatchers(HttpMethod.GET,  "/sample/admin").permitAll()
-		.antMatchers(HttpMethod.POST, "/member/signup").permitAll()
+		.antMatchers(HttpMethod.GET, "/members/signin").permitAll()
 		.antMatchers(HttpMethod.POST, "/mail").permitAll()
 		.antMatchers(HttpMethod.GET, "/comewithme/comeWithMeList", "/comewithme/comeWithMeSelect", "/comewithme/comeWithMeBoard").permitAll()
 		.antMatchers(HttpMethod.GET,  "/members/login").permitAll()
