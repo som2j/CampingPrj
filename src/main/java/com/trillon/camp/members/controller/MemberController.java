@@ -22,36 +22,39 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MemberController {
 
-	private final MemberService memberService;
-	
-	Logger log = LoggerFactory.getLogger(this.getClass());
-		
-	
-	@GetMapping("/login")
-	public void login() { System.out.println("login.jsp"); }
-	
-	@PostMapping("/login")
-	public String loginUser(Member member, HttpSession session, RedirectAttributes rAttributes,String test) {
-		System.out.println(test);
-		System.out.println(member);
-		Member auth = memberService.authenticateUser(member);
-		
-		if(auth==null) {
-			System.out.println("auth=null");
-			return "redirect:/members/login";
-		}
-		System.out.println(auth);
-		
-		session.setAttribute("auth", auth);
-		return "redirect:/index";
-	}
-<<<<<<< Updated upstream
+    private final MemberService memberService;
 
-	@GetMapping("/signIn")
-=======
-	
-	
-	@GetMapping("/signin")
->>>>>>> Stashed changes
-	public void signIn() { System.out.println("signin.jsp"); }
+    Logger log = LoggerFactory.getLogger(this.getClass());
+
+
+    @GetMapping("/login")
+    public void login() {
+        System.out.println("login.jsp");
+    }
+
+    @PostMapping("/login")
+    public String loginUser(Member member, HttpSession session, RedirectAttributes rAttributes, String test) {
+        System.out.println(test);
+        System.out.println(member);
+        Member auth = memberService.authenticateUser(member);
+
+        if (auth == null) {
+            System.out.println("auth=null");
+            return "redirect:/members/login";
+        }
+        System.out.println(auth);
+
+        session.setAttribute("auth", auth);
+        return "redirect:/index";
+    }
 }
+//<<<<<<< Updated upstream
+//
+//    //@GetMapping("/signIn")
+//=======
+//
+//
+//    //@GetMapping("/signin")
+//>>>>>>> Stashed changes
+//    //public void signIn() { System.out.println("signin.jsp"); }
+////}
